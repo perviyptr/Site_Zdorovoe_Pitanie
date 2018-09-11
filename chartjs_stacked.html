@@ -1,0 +1,105 @@
+
+<!doctype html>
+<html>
+
+<head>
+	<title>Stacked Bar Chart</title>
+	<script src="Chart.bundle.min.js"></script>
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+</head>
+
+<body>
+	<div style="width: 75%">
+		<canvas id="canvas"></canvas>
+	</div>
+	<script>
+		function randomNumber() {
+			return Math.round(Math.random() * 100);
+		}
+
+		function randomInt(min, max) {
+			return Math.floor(Math.random() * (max - min + 1)) + min;
+		}
+
+		function randomColor() {
+			return 'rgb(' + randomInt(0, 255) + ', ' + randomInt(0, 255) + ', ' + randomInt(0, 255) + ')';
+		}
+
+		const barChartData = {
+			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+			datasets: [{
+				label: 'Dataset 1',
+				backgroundColor: randomColor(),
+				data: [
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber()
+				]
+			}, {
+				label: 'Dataset 2',
+				backgroundColor: randomColor(),
+				data: [
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber()
+				]
+			}, {
+				label: 'Dataset 3',
+				backgroundColor: randomColor(),
+				data: [
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber(),
+					randomNumber()
+				]
+			}]
+		};
+
+		window.onload = function () {
+			const ctx = document.getElementById('canvas').getContext('2d');
+
+			window.myBar = new Chart(ctx, {
+				type: 'bar',
+				data: barChartData,
+				options: {
+					title: {
+						display: true,
+						text: 'Chart.js Bar Chart - Stacked'
+					},
+					tooltips: {
+						mode: 'index',
+						intersect: false
+					},
+					responsive: true,
+					scales: {
+						xAxes: [{
+							stacked: true,
+						}],
+						yAxes: [{
+							stacked: true
+						}]
+					}
+				}
+			});
+		};
+	</script>
+</body>
+
+</html>
