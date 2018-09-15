@@ -208,6 +208,77 @@ chart = new Chart(ctx, {
 	}
 });
 
+
+
+
+let блокДляВставкиТаблицы;
+let таблица1;
+let таблица2;
+let заголовок;
+select.addEventListener("change", СоздатьТаблицу);
+ function СоздатьТаблицу(){
+	var таблицаДляУдаления = document.querySelectorAll('.table');
+	for(var i = 0; i < таблицаДляУдаления.length; i++){
+		if(таблицаДляУдаления){
+			таблицаДляУдаления[i].remove();
+		}
+	}	
+
+	блокДляВставкиТаблицы = document.getElementById('дляТаблицы');
+	таблица1 = document.createElement('table');
+	таблица2 = document.createElement('table');	
+	блокДляВставкиТаблицы.appendChild(таблица1);
+	блокДляВставкиТаблицы.appendChild(таблица2);
+	
+	for (var key in products.nutrients){
+	var кодНутриента = document.createElement('p');
+	кодНутриента.textContent = products.nutrients[key];
+	таблица1.appendChild(кодНутриента);	
+	
+	for(var key in kodNutrients){
+	var наименованиеНутриента = document.createElement('p');
+	наименованиеНутриента.textContent = kodNutrients[key];
+		if(кодНутриента.textContent == key){
+			кодНутриента.remove();
+			таблица1.appendChild(наименованиеНутриента);
+			}
+			if(кодНутриента.textContent == '221' || кодНутриента.textContent == '257' || кодНутриента.textContent == '263' || кодНутриента.textContent == '324' || кодНутриента.textContent == '325' || кодНутриента.textContent == '326' || кодНутриента.textContent == '334' || кодНутриента.textContent == '337' || кодНутриента.textContent == '338' || кодНутриента.textContent == '341' || кодНутриента.textContent == '342' || кодНутриента.textContent == '343' || кодНутриента.textContent == '344' || кодНутриента.textContent == '345' || кодНутриента.textContent == '346' || кодНутриента.textContent == '347' || кодНутриента.textContent == '417' || кодНутриента.textContent == '428' || кодНутриента.textContent == '429' || кодНутриента.textContent == '431' || кодНутриента.textContent == '432' || кодНутриента.textContent == '454' || кодНутриента.textContent == '573' || кодНутриента.textContent == '578' || кодНутриента.textContent == '605' || кодНутриента.textContent == '607' || кодНутриента.textContent == '608' || кодНутриента.textContent == '609' || кодНутриента.textContent == '610' || кодНутриента.textContent == '611' || кодНутриента.textContent == '612' || кодНутриента.textContent == '613' || кодНутриента.textContent == '614' || кодНутриента.textContent == '615' || кодНутриента.textContent == '617' || кодНутриента.textContent == '618' || кодНутриента.textContent == '619' || кодНутриента.textContent == '620' || кодНутриента.textContent == '621' || кодНутриента.textContent == '624' || кодНутриента.textContent == '625' || кодНутриента.textContent == '626' || кодНутриента.textContent == '627' || кодНутриента.textContent == '628' || кодНутриента.textContent == '629' || кодНутриента.textContent == '630' || кодНутриента.textContent == '631' || кодНутриента.textContent == '636' || кодНутриента.textContent == '638' || кодНутриента.textContent == '639' || кодНутриента.textContent == '641' || кодНутриента.textContent == '652' || кодНутриента.textContent == '653' || кодНутриента.textContent == '654' || кодНутриента.textContent == '662' || кодНутриента.textContent == '663' || кодНутриента.textContent == '664' || кодНутриента.textContent == '665' || кодНутриента.textContent == '666' || кодНутриента.textContent == '669' || кодНутриента.textContent == '670' || кодНутриента.textContent == '671' || кодНутриента.textContent == '672' || кодНутриента.textContent == '673' || кодНутриента.textContent == '674' || кодНутриента.textContent == '675' || кодНутриента.textContent == '676' || кодНутриента.textContent == '685' || кодНутриента.textContent == '687' || кодНутриента.textContent == '689' || кодНутриента.textContent == '693' || кодНутриента.textContent == '695' || кодНутриента.textContent == '696' || кодНутриента.textContent == '697' || кодНутриента.textContent == '851' || кодНутриента.textContent == '852' || кодНутриента.textContent == '853' || кодНутриента.textContent == '855' || кодНутриента.textContent == '856' || кодНутриента.textContent == '857' || кодНутриента.textContent == '858' || кодНутриента.textContent == '859'){
+				кодНутриента.textContent = '—';
+			}
+		}		
+	}
+	for (var key in products.products[select.value]){
+	var содержаниеВеществВнутриентах = document.createElement('p');
+		if(products.products[select.value][key] == null || products.products[select.value][key] == 0){
+			содержаниеВеществВнутриентах.textContent = '—';
+		}else{
+			содержаниеВеществВнутриентах.textContent = products.products[select.value][key];
+		}
+	таблица2.appendChild(содержаниеВеществВнутриентах);
+	заголовок = document.getElementById('заголовокДляСостава');
+	}
+
+	for (var key in дополнительныеПродукты[select.value]){
+	var содержаниеВеществВнутриентах = document.createElement('p');
+		if(дополнительныеПродукты[select.value][key] == null || дополнительныеПродукты[select.value][key] == 0){
+			содержаниеВеществВнутриентах.textContent = '—';
+		}else{
+			содержаниеВеществВнутриентах.textContent = дополнительныеПродукты[select.value][key];
+		}
+	таблица2.appendChild(содержаниеВеществВнутриентах);
+	заголовок = document.getElementById('заголовокДляСостава');
+	}
+	
+	заголовок.textContent = productsRus[select.value] + ' (Содержание химических элементов в 100г)' + "—" + '(Удалить "F5")'; 
+	заголовок.classList.remove("скрытый");	
+	таблица1.classList.add("table");
+	таблица2.classList.add("table");
+}
+
+
+
+
+
 document.getElementById('resetGraphHidden').addEventListener('click', resetGraphHidden);
 
 function resetGraphHidden() {

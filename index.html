@@ -241,7 +241,7 @@
            #заголовок:hover,#подЗаголовок:hover{
                color: rgb(5, 150, 19);
            }
-           #справка{
+           .справка{
                 font-size: 18pt;
            }
            #текст{
@@ -279,6 +279,32 @@
               text-align: center;
               margin-bottom: 5px;
               font-family: Verdana, sans-serif;
+            }
+            #дляТаблицы{
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: flex-start;
+            }
+            .скрытый{
+              display: none;
+            }
+            .table{
+              min-width:200px;
+              border: solid 2px rgb(3, 64, 56);
+              background: rgb(241, 220, 247);
+              box-shadow: 0 3px 5px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+            }
+            td{
+              border: solid 1px;
+              height: 20px;
+            }
+            #заголовокДляСостава{
+              font-size: 18px;
+            }
+            span{
+              font-size: 15px;
             }
 
      </style>
@@ -446,7 +472,11 @@
           <canvas id="canvas" width="2000" height="1500"></canvas>
      </div>
 
-     <h3 id="справка">Справочные данные</h3>
+    <h3 class="скрытый" id ="заголовокДляСостава"></h3>
+    <div id = дляТаблицы></div>
+
+
+     <h3 class ="справка">Справочные данные</h3>
           <div id="dla_razmechenia_spravki">
           <div id="dla_risunkov_sleva">
                <img class="risunki" src="Ris/7.png">
