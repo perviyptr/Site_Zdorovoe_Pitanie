@@ -266,16 +266,21 @@ select.addEventListener("change", СоздатьТаблицу);
 			содержаниеВеществВнутриентах.textContent = дополнительныеПродукты[select.value][key];
 		}
 	таблица2.appendChild(содержаниеВеществВнутриентах);
-	заголовок = document.getElementById('заголовокДляСостава');
 	}
-	
-	заголовок.textContent = productsRus[select.value] + ' (Содержание химических элементов в 100г)' + "—" + '(Удалить "F5")'; 
+	заголовок = document.getElementById('заголовокДляСостава');
+	заголовок.textContent = productsRus[select.value] + ' (Содержание химических элементов в 100г)' + "—" + '(Удаление по щелчку)'; 
 	заголовок.classList.remove("скрытый");	
 	таблица1.classList.add("table");
 	таблица2.classList.add("table");
+
+	заголовок.addEventListener('click', СкрытьТаблицу);
+	function СкрытьТаблицу(){
+		заголовок.classList.add("скрытый");	
+		таблица1.classList.add("скрытый");
+		таблица2.classList.add("скрытый");
+	}
+
 }
-
-
 
 
 
