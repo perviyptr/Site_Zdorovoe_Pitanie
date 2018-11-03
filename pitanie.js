@@ -81,7 +81,6 @@ function рассчитатьПродукт(
 		alert("Ошибка: отсутствуют данные о продукте");
 		return;
 	}
-
 	const пищеваяЦенность = normKeys.map(
 		код => полнаяПищеваяЦенность[индексыНутриентов[код]] || 0
 	);
@@ -452,11 +451,11 @@ function пересчитатьКалории() {
 }
 
 function пересчитатьГрафик() {
-	norms['208'] = Number(Калорийность.value);
-	norms['203'] = Number(Белки.value);
-	norms['204'] = Number(Жиры.value);
-	norms['205'] = Number(Углеводы.value);	
-	norms['255'] = Number(Вода.value);
+	norms['208'] = Number(Калорийность.value) || 2000;
+	norms['203'] = Number(Белки.value) || 100;
+	norms['204'] = Number(Жиры.value) || 80;
+	norms['205'] = Number(Углеводы.value) || 230;	
+	norms['255'] = Number(Вода.value) || 3200;
 
 	chart.data.datasets = chart.data.datasets.map(
 		({номерПродукта, mass, backgroundColor}) => рассчитатьПродукт(номерПродукта, mass, backgroundColor)
